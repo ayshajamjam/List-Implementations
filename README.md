@@ -1,1 +1,16 @@
 # List-Implementations
+
+In this project, I created two separate classes that represent two different lists: the MTF list and the Ordered Array Structure. The Ordered Array Structure uses the merge sort to sort the integers in the list in increasing order. The merge sort is implemented recursively and is in O(nlogn). A binary search is implemented to facilitate queries and is O(log n). The MTF list take integers stored in an arbitrary order and uses a search method to organize the list using the move-to-front strategy. This has a worst case time complexity of O(n). Both the insert function in the MTF list and in the ordered list have a worst case time complexity of O(1) because they only add to the back of the queue and array, respectively.
+
+MTF list implementation (queue)
+I implemented my MTF list as a queue so that I could focus on pointer management in an effort to make my code more efficient. I included a tail pointer that points to the last node of the queue which makes it easier to add elements and to move the last element to the front of the list without overcomplicating my code. For the searchMove(int) function, I used a trailer pointer called previous to keep track of the node before the current node being observed. In the event that the temp pointer points to the object being searched for, I am able to move that object to the front by shifting around pointers, made easier by the inclusion of the prev pointer.
+
+Ordered list implementation (array)
+My merge sort uses recursion to sort the list. I have included a separate method for merging lists. This implementation is efficient in space because I place the elements in the array as I sort them in an effort to avoid having to create new arrays and having to make copies.
+My binary search implementation simply looks at a list and compares the value being searched for to the middle value. If value is greater than arraySpot[mid], then we look at the second half of the list. If it is smaller than arraySpot[mid], we look at the first half of the list. If value is equal to arraySpot[mid], then we know it is in the list and we have found it.
+
+Main.cpp
+In my main file, I open the file which is passed as an argument. I read the numOfElements and make two different lists-  MtfList and OrderedList. I then insert the elements from the file provided into the two lists and I use the numOfElements to make sure my loop terminates at the appropriate time. I then sort the ordered list using mergeSort. I then read the number of queries. After that, I use ctime to figure out how long it takes to query using the two different methods. As  time how long it takes to do each query and add that to the total time for each respective list. In the end, I output the time it took for each list and declared which one was faster.
+
+In xCode, my output is a very precise number which for some reason gets truncated in the terminal. For this reason, smaller files with fewer queries make it seem that both implementations occur in the same amount of time. This is only the case on the terminal, but not on xCode, where the numbers are more precise and it is clear which implementation is faster.
+![image](https://user-images.githubusercontent.com/36302020/138743724-8a008832-7352-4e0d-a3e9-2369481187ab.png)
